@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-<<<<<<< HEAD
 # Sets up the web servers for the deployment of web_static.
 
 # Install Nginx if not already installed
