@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that starts a Flask web application:
+script that starts a Flask web application:
 listening on 0.0.0.0, port 5000
 With two Routes
 """
