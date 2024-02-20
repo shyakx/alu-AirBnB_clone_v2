@@ -1,56 +1,54 @@
 #!/usr/bin/python3
-"""
-Start web application with two routings
-"""
+""" 5. Add fifth view func that displays HTML page if n is int """
 
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
+
+
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
 @app.route('/')
-def hello():
-    """Return string when route queried
-    """
+def hello_world():
+    """ Returns some text. """
     return 'Hello HBNB!'
 
 
 @app.route('/hbnb')
-def hbnb():
-    """Return string when route queried
-    """
+def hello():
+    """ Return other text. """
     return 'HBNB'
 
 
 @app.route('/c/<text>')
-def c_is_fun(text):
-    """Return reformatted text
-    """
-    return 'C ' + text.replace('_', ' ')
+def c_text(text):
+    """ replace text with variable. """
+    text = text.replace('_', ' ')
+    return 'C {}'.format(text)
 
 
 @app.route('/python/')
 @app.route('/python/<text>')
-def python_with_text(text='is cool'):
-    """Reformat text based on optional variable
-    """
-    return 'Python ' + text.replace('_', ' ')
+def python_text(text='is cool'):
+    """ replace more text with another variable. """
+    text = text.replace('_', ' ')
+    return 'Python {}'.format(text)
 
 
 @app.route('/number/<int:n>')
-def number(n=None):
-    """Allow request if path variable is a valid integer
-    """
-    return str(n) + ' is a number'
+def number_text(n):
+    """ replace with int only if given int. """
+    n = str(n)
+    return '{} is a number'.format(n)
 
 
 @app.route('/number_template/<int:n>')
-def number_template(n):
-    """Retrieve template for request
-    """
-    path = '5-number.html'
-    return render_template(path, n=n)
+def html_num(n):
+    """ display html if n is int. """
+    n = str(n)
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
-    app.url_map.strict_slashes = False
     app.run(host='0.0.0.0', port=5000)
