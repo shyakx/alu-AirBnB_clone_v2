@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 7. Start flask service that does something. """
+""" 7. Start Flask service that does something. """
 
 from flask import Flask
 from flask import render_template
